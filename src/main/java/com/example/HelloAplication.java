@@ -1,10 +1,14 @@
 package com.example;
-import com.example.vistas.Calculadora;
+import com.example.tap2024b.vistas.Calculadora;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -15,15 +19,17 @@ public class HelloApplication extends Application {
 
     private BorderPane bdpPrincipal;
     private MenuBar mnbPrincipal;
-    private Menu menCompetencia1, menCompetencia2, menCompetencia3;
+    private Menu menCompetencia1, menCompetencia2, menSalir;
     private MenuItem mitCalculadora;
 
     public void CrearUI(){
-       mitCalculadora = new MenuItem("Calculadora");
-       mitCalculadora.setOnAction(evenr -> new Calculadora());
-       menCompetencia1 = new Menu("Competencia1");
+        mitCalculadora = new MenuItem("Calculadora");
+        mitCalculadora.setOnAction(event -> new Calculadora());
+        menCompetencia1 = new Menu("Competencia 1");
         menCompetencia1.getItems().addAll(mitCalculadora);
-       mnbPrincipal = new MenuBar(mnbPrincipal);
+        mnbPrincipal = new MenuBar(menCompetencia1);
+        bdpPrincipal = new BorderPane();
+        bdpPrincipal.setTop(mnbPrincipal);
     }
 
     @Override
@@ -37,7 +43,7 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String... args) {
         launch();
     }
 }
